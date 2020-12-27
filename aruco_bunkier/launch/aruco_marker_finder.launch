@@ -3,17 +3,17 @@ Example of run:
 roslaunch aruco_marker_finder.launch markerId:=701 markerSize:=0.05
 -->
 <launch>
-
-
+    
     <arg name="markerId"        default="0"/>
+    <arg name="nodeName"        default="$(eval 'aruco_single' + str(arg('markerId')))"/>
     <arg name="markerSize"      default="0.1"/>    <!-- in meter -->
     <arg name="eye"             default="left"/>
-    <arg name="marker_frame"    default="marker_frame"/>
-    <arg name="ref_frame"       default=""/>  <!-- leave empty and the pose will be published wrt param parent_name -->
+    <arg name="marker_frame"    default="$(eval 'marker_frame' + str(arg('markerId')))"/>
+    <arg name="ref_frame"       default="usb_cam"/>  <!-- leave empty and the pose will be published wrt param parent_name -->
     <arg name="corner_refinement" default="LINES" /> <!-- NONE, HARRIS, LINES, SUBPIX -->
 
 
-    <node pkg="aruco_ros" type="single" name="aruco_single">
+    <node pkg="aruco_ros" type="single" name="$(arg nodeName)">
         <remap from="/camera_info" to="/usb_cam/camera_info" />
         <remap from="/image" to="/usb_cam/image_raw" />
         <param name="image_is_rectified" value="True"/>
@@ -26,4 +26,3 @@ roslaunch aruco_marker_finder.launch markerId:=701 markerSize:=0.05
     </node>
 
 </launch>
-
