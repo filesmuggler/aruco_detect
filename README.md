@@ -19,3 +19,21 @@ You should copy this file to the calibration folder in usb_cam in your workspace
 
 ## Running detection
 
+Replace video_feed value with your value of the camera.
+```
+roslaunch usb_cam usb_cam-test.launch video_feed:="/dev/video2"
+```
+
+Replace markerId and markerSize with your values. Checkout more arguments inside the launchfile.
+```
+roslaunch aruco_bunkier aruco_marker_finder.launch markerID:=0 markerSize:=0.1
+```
+
+Run Rviz with config file.
+```
+rosrun rviz rviz -d src/aruco_detect/aruco.rviz
+```
+
+## Authors and sources
+* **Krzysztof Stężała** - *Initial work* - [filesmuggler](https://github.com/filesmuggler)
+* **usb_cam** - *Repo modification* - [usb_cam repository](https://github.com/ros-drivers/usb_cam)
