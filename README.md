@@ -6,11 +6,13 @@ Repo for aruco tag detection
 ```
 git clone https://github.com/filesmuggler/aruco_detect
 
-```
+git clone https://github.com/filesmuggler/usb_cam
 
+```
+Build the workspace.
 ## Camera calibration
 
-If your Camera_Info topic returns empty K,P,D matrices (all zeros), you sould calibrate your camera first. 
+If your Camera_Info topic returns empty K,P,D matrices (all zeros), you should calibrate your camera first. 
 Follow the tutorial on [website](http://wiki.ros.org/camera_calibration/Tutorials/MonocularCalibration).
 
 You will obtain ost.yaml file which is the calibration file to feed to the node running camera.
@@ -19,9 +21,9 @@ You should copy this file to the calibration folder in usb_cam in your workspace
 
 ## Running detection
 
-Replace video_feed value with your value of the camera.
+Replace video_feed value with your value of the camera and markerId with value of the tag to follow. You can track arbitrary number of tags assumed that you specify value of the argument.
 ```
-roslaunch usb_cam usb_cam-test.launch video_feed:="/dev/video2"
+roslaunch usb_cam usb_cam-test.launch video_feed:="/dev/video2" markerId:=0
 ```
 
 Replace markerId and markerSize with your values. Checkout more arguments inside the launchfile.
@@ -36,4 +38,3 @@ rosrun rviz rviz -d src/aruco_detect/aruco.rviz
 
 ## Authors and sources
 * **Krzysztof Stężała** - *Initial work* - [filesmuggler](https://github.com/filesmuggler)
-* **usb_cam** - *Repo modification* - [usb_cam repository](https://github.com/ros-drivers/usb_cam)
