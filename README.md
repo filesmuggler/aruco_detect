@@ -3,10 +3,10 @@ Repo for aruco tag detection
 
 ## Initial setup 
 
-'''
+```
 git clone https://github.com/filesmuggler/aruco_detect
 
-'''
+```
 
 ## Camera calibration
 
