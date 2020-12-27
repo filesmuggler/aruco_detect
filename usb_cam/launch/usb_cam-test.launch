@@ -1,7 +1,8 @@
 <launch>
   <arg name="video_feed" default="/dev/video0"/>
+
   <node name="usb_cam" pkg="usb_cam" type="usb_cam_node" output="screen" >
-    <param name="camera_info_url" value="file:///$(find usb_cam)/ost.yaml" />
+    <param name="camera_info_url" value="file:///$(find usb_cam)/calibration/ost.yaml" />
     <param name="video_device" value="$(arg video_feed)" />
     <param name="image_width" value="640" />
     <param name="image_height" value="480" />
